@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: app
+    build:
+      context: ./app
+      dockerfile: ./Dockerfile
+    image: echo-app-dev
+    environment:
+      - ROLE=app
+    tty: true
+    ports:
+      - 8080:8080
+    networks:
+      - local
+  web:
+    container_name: web
+    build:
+      context: ./web
+      dockerfile: ./Dockerfile
+    image: echo-web-dev
+    environment:
+      - ROLE=web
+      - ROOT=/var/www/
+    tty: true
+    ports:
+      - 5000:5000
+    networks:
+      - local
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    volumes:
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf:cached
+      - ./mysql/init:/docker-entrypoint-initdb.d:cached
+    environment:
+      MYSQL_ROOT_PASSWORD: ROOT
+    ports:
+      - 3306:3306
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge
