@@ -6,15 +6,15 @@ DB 認証情報の管理についてはどうにかしたい
 
 ## Overview
 
-golang の echo ライブラリを使い、とても雑な Web API 開発用テンプレートを用意するもの
+golang の echo を使って、とても雑な Web API 開発用テンプレートを用意するもの
 
 ## Requirements
 
-すべて DockerImage で指定していますが列挙
+すべて DockerImage で指定しているが列挙
 
 - golang 1.18.4
-- Nginx 1.23.2
-- MySQL 8.0
+- nginx 1.23.2
+- mysql 8.0.31
 
 ## Usage
 
