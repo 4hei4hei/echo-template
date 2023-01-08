@@ -30,7 +30,7 @@ services:
       - local
   mysql:
     container_name: mysql
-    image: mysql:8.0
+    image: mysql:8.0.31
     volumes:
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf:cached
       - ./mysql/init:/docker-entrypoint-initdb.d:cached
